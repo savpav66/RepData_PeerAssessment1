@@ -140,7 +140,7 @@ hist(stepsperday,main=&quot;Mean Total Steps per Day&quot;,xlab=&quot;Number of 
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
-<p>This can be easily been seen if we make a plot with the average number of steps made on weekend and weekdays. Firstly we must separate the data in weekdays and weekends. Thus we need to create a new column in the datafram as a factor with two values, weekday and weekend. We create the extra column and populate it with the name of the day the week. Then we change each value, according to the name of the day, to weekday or weekend. Last, we make it a factor.</p>
+<p>This can be easily been seen if we make a plot with the average number of steps made on weekend and weekdays. Firstly we must separate the data in weekdays and weekends. Thus we need to create a new column in the datafram as a factor with two values, weekday and weekend. We take the day and get the numeric equivalent of the weekday. Day 0 and 6 are Sunday and Saturday. So we create two subsets by subsetting according to day. Then we average to get the activity of each group of days and plot them on one graph to see the differences.</p>
 <pre class="r"><code>data$typeofday&lt;-as.POSIXlt(as.Date(data$date))$wday
 pat_weekend&lt;-data[ data$typeofday==0 | data$typeofday==6,]
 pat_weekdays&lt;-data[ data$typeofday!=0 &amp; data$typeofday!=6,]
